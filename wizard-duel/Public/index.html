@@ -37,12 +37,12 @@
         <button
           class="btn btn-lg"
           id="btnConfirmDraft"
-          onclick="confirmDraft()"
+          onclick="window.confirmDraft()"
           disabled
         >
           ⚔ Iniciar Duelo
         </button>
-        <button class="btn" onclick="rerollPack()">🎲 Novo Pack</button>
+        <button class="btn" onclick="window.rerollPack()">🎲 Novo Pack</button>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
           <button
             class="btn"
             id="btnNext"
-            onclick="nextRound()"
+            onclick="window.nextRound()"
             style="display: none"
           >
             Próxima Rodada →
@@ -113,7 +113,7 @@
         <div class="over-title" id="overTitle">Vitória!</div>
         <div class="over-sub" id="overSub">O duelo terminou</div>
         <span class="over-score" id="overScore"></span>
-        <button class="btn btn-lg" onclick="restartGame()">
+        <button class="btn btn-lg" onclick="window.restartGame()">
           ⚡ Jogar Novamente
         </button>
       </div>
