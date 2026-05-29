@@ -38,6 +38,11 @@ function processCharactersData(apiCharactersData) {
     const { attributes } = character;
 
     if (isValidCharacter(attributes)) {
+      const power = calculatePower(attributes.house);
+      const magic = calculateMagic(attributes.species);
+      const defense = calculateDefense(attributes.ancestry);
+      const hp = calculateHp(defense);
+
       processedCharacters.push({
         id: character.id,
         name: attributes.name,
@@ -45,11 +50,11 @@ function processCharactersData(apiCharactersData) {
         species: attributes.species || 'Unknown',
         ancestry: attributes.ancestry || 'Unknown',
         image: attributes.image,
-        power: calculatePower(attributes.house),
-        magic: calculateMagic(attributes.species),
-        defense: calculateDefense(attributes.ancestry),
-        hp: calculateHp(calculateDefense(attributes.ancestry)),
-        maxHp: calculateHp(calculateDefense(attributes.ancestry)),
+        power,
+        magic,
+        defense,
+        hp,
+        maxHp: hp,
       });
     }
   });

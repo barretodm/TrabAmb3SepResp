@@ -73,12 +73,19 @@ window.toggleDraftCard = function toggleDraftCard(idx) {
 };
 
 window.rerollPack = async function rerollPack() {
+  // 1. CAPTURA O BOTÃO E DESABILITA O CLIQUE
+  const btn = document.querySelector('button[onclick="window.rerollPack()"]');
+  if (btn) btn.disabled = true;
+
   window.gameState.selectedCards = [];
   document.getElementById('packGrid').innerHTML = '<div style="text-align:center;padding:40px;font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:2px;color:var(--parchment-dark);grid-column:1/-1">Invocando novos bruxos...</div>';
 
   const data = await window.fetchPackData();
   window.gameState.pack = data.cards;
   window.renderPack();
+
+  // 2. REABILITA O BOTÃO APÓS A TELA SER PINTADA COM O NOVO PACK
+  if (btn) btn.disabled = false;
 };
 
 window.confirmDraft = function confirmDraft() {
